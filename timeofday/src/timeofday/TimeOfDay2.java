@@ -2,7 +2,7 @@ package timeofday;
 
 /**
  * Elke instantie van deze klasse slaat een tijdstip met
- * een geheel aantal uren tussen 0 en 23 en een geheel aantal minuten tussen 0 en 59 op.
+ * een geheel aantal minuten sinds middernacht tussen 0 en 1440 op.
  * 
  * @invar De uren moeten een integer tussen 0 en 23 zijn.
  * 	| 0 <= getHours() && getHours() <= 23
@@ -10,21 +10,18 @@ package timeofday;
  * @invar De minuten moeten een integer tussen 0 en 59 zijn.
  * 	| 0 <= getMinutes() && getMinutes() <= 59
  */
-public class TimeOfDay {
+public class TimeOfDay2 {
 	/**
-	 * @invar | 0 <= hours && hours <= 23
-	 * @invar | 0 <= minutes && minutes <= 59
+	 * @invar | 0 <= minutesSinceMidnight && minutesSinceMidnight <= 1439
 	 */
-	private int hours;
-	private int minutes;
-	
+	private int minutesSinceMidnight;
 	
 	public int getHours() {
-		return this.hours;
+		return minutesSinceMidnight/60;
 	}
 	
 	public int getMinutes() {
-		return this.minutes;
+		return minutesSinceMidnight%60;
 	}
 	
 	/**
@@ -37,13 +34,12 @@ public class TimeOfDay {
 	 * @post | getHours() == hours
 	 * @post | getMinutes() == minutes
 	 */
-	public TimeOfDay(int hours, int minutes) {
+	public TimeOfDay2(int hours, int minutes) {
 		if (hours < 0 || hours > 23)
 			throw new IllegalArgumentException("`hours` ligt niet tussen 0 en 23");
 		if (minutes < 0 || minutes > 59)
 			throw new IllegalArgumentException("`minutes` ligt niet tussen 0 en 59");
-		this.hours = hours;
-		this.minutes = minutes;
+		this.minutesSinceMidnight = hours*60 + minutes;
 	}
 	
 	/**
@@ -56,7 +52,7 @@ public class TimeOfDay {
 	public void setHours(int hours) {
 		if (hours < 0 || hours > 23)
 			throw new IllegalArgumentException("`hours` ligt niet tussen 0 en 23");
-		this.hours = hours;
+		minutesSinceMidnight = hours*60 + this.getMinutes();
 	}
 	
 	/**
@@ -69,6 +65,7 @@ public class TimeOfDay {
 	public void setMinutes(int minutes) {
 		if (minutes < 0 || minutes > 59)
 			throw new IllegalArgumentException("`minutes` ligt niet tussen 0 en 59");
-		this.minutes = minutes;
+		minutesSinceMidnight = this.getHours()*60 + minutes;
 	}
+
 }
