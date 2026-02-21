@@ -7,8 +7,28 @@ import org.junit.jupiter.api.Test;
 class TimeOfDayTest {
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void timeofdayTest() {
+		TimeOfDay t = new TimeOfDay(10,30);
+		assertEquals(10, t.getHours());
+		assertEquals(30, t.getMinutes());
+		t.setHours(12);
+		assertEquals(12, t.getHours());
+		t.setMinutes(59);
+		assertEquals(59, t.getMinutes());
+		
+		assertThrows(IllegalArgumentException.class, () -> t.setHours(-1));
+		assertThrows(IllegalArgumentException.class, () -> t.setHours(24));
+		assertThrows(IllegalArgumentException.class, () -> t.setMinutes(-1));
+		assertThrows(IllegalArgumentException.class, () -> t.setMinutes(60));
+		
+		assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(-1,30));
+		assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(24,30));
+		assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(0,-1));
+		assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(0,60));
+
+
+
+
 	}
 
 }

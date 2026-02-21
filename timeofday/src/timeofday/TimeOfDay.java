@@ -37,7 +37,7 @@ public class TimeOfDay {
 	 * @post | getHours() == hours
 	 * @post | getMinutes() == minutes
 	 */
-	TimeOfDay(int hours, int minutes) {
+	public TimeOfDay(int hours, int minutes) {
 		if (hours < 0 || hours > 23)
 			throw new IllegalArgumentException("`hours` ligt niet tussen 0 en 23");
 		if (minutes < 0 || minutes > 59)
@@ -48,19 +48,27 @@ public class TimeOfDay {
 	
 	/**
 	 * Stelt de uren van het object in op de gegeven waarde.
+	 * @throws IllegalArgumentException
+	 * 	| hours < 0 || hours > 23
 	 * @mutates | this
 	 * @post | getHours() == hours
 	 */
 	public void setHours(int hours) {
+		if (hours < 0 || hours > 23)
+			throw new IllegalArgumentException("`hours` ligt niet tussen 0 en 23");
 		this.hours = hours;
 	}
 	
 	/**
 	 * Stelt de minuten van het object in op de gegeven waarde.
+	 * @throws IllegalArgumentException
+	 * 	| minutes < 0 || minutes > 59
 	 * @mutates | this
 	 * @post | getMinutes() == minutes
 	 */
 	public void setMinutes(int minutes) {
+		if (minutes < 0 || minutes > 59)
+			throw new IllegalArgumentException("`minutes` ligt niet tussen 0 en 59");
 		this.minutes = minutes;
 	}
 }
