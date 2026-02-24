@@ -48,6 +48,7 @@ public class TimeOfDay2 {
 	 * 	| hours < 0 || hours > 23
 	 * @mutates | this
 	 * @post | getHours() == hours
+	 * @post | getMinutes() == old(getMinutes())
 	 */
 	public void setHours(int hours) {
 		if (hours < 0 || hours > 23)
@@ -61,6 +62,7 @@ public class TimeOfDay2 {
 	 * 	| minutes < 0 || minutes > 59
 	 * @mutates | this
 	 * @post | getMinutes() == minutes
+	 * @post | getHours() == old(getHours())
 	 */
 	public void setMinutes(int minutes) {
 		if (minutes < 0 || minutes > 59)
