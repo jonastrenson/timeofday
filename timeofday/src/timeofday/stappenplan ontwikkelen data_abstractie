@@ -1,0 +1,44 @@
+Hoe ontwikkel ik een data-abstractie?
+=====================================
+
+A. De API definiëren
+
+1. Schrijf een regel informele documentatie bij de klasse
+	- "slaat ... op" als mutable
+	- "stelt ... voor" als immutable
+
+2. Definieer de rauwe abstracte toestandsruimte
+	= declareer de inspectoren
+	
+3. Definieer de geldige abstracte toestandsruimte
+	= de verzameling van geldige abstracte toestanden
+	= schrijf de abstractetoestandsinvarianten
+	= @invar-clausules in de Javadoc voor de klasse +
+	  @post-clausules bij de inspectoren
+
+4. Declareer en documenteer de constructoren en mutatoren
+
+
+B. De API implementeren
+
+1. De representatie definieren
+	1.1. De rauwe concrete toestandsruimte definieren
+		 = de velden definieren
+		 
+	1.2. De geldige concrete toestandsruimte definieren
+		 = de representatie-invarianten noteren
+		 
+	1.3. De abstractierelatie definieren
+		 = welke abstracte toesta,d komt overeen met
+		   een gegeven concrete toestand?
+		 = implementeer de inspectoren
+		 
+		 Sanity checks:
+		 1. Voor een geldige concrete toestand mogen de 
+		 	inspectoren niet crashen
+		 2. De inspectoren beelden een geldige concrete
+		 	toestand af op een geldige abstracte toestand
+
+2. De constructoren en mutatoren implementeren.
+
+
